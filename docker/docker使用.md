@@ -157,3 +157,22 @@ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1;
 ##### 4 删除镜像
 
 `docker rmi`
+
+### 三、Dockerfile
+
+#### 常用指令
+
+- FROM：定制的镜像都是基于 FROM 的镜像
+- RUN：用于执行后面跟着的命令行命令。有shell格式和exec格式，用`&&`连接命令只会创建一层镜像
+- COPY：复制指令，从上下文目录中复制文件或者目录到容器里指定路径。
+
+```dockerfile
+COPY [--chown=<user>:<group>] <源路径1>...  <目标路径>
+COPY [--chown=<user>:<group>] ["<源路径1>",...  "<目标路径>"] #用户和用户组可选
+```
+
+#### 构建镜像
+
+`docker build -t 镜像名:标签 .` 
+
+.代表本次执行的上下文路径。上下文路径，是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。 
