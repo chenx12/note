@@ -93,12 +93,13 @@ subject 描述信息（必选）
 Merge合并后保留两个分支的记录并出现合并后的分支；解决冲突后需要手动git add、git commit生成提交；一次性解决之前提交的所有冲突
 
 #### 10.git撤销和回滚
-Rebase 展示合并后的记录，合并后生成新的提交的副本；解决冲突后自动生成新的提交；只能单次解决冲突，多次解决需要重复操作 修改一项冲突后需要使用git rebase --continue显示下一个冲突
-将未存入暂存区的文件撤销 Git checkout -- 文件名
+- Rebase 展示合并后的记录，合并后生成新的提交的副本；解决冲突后自动生成新的提交；只能单次解决冲突，多次解决需要重复操作
+- 修改一项冲突后需要使用git rebase --continue显示下一个冲突
+- 将未存入暂存区的文件撤销 Git checkout -- 文件名  
 对所有将未存入暂存区的文件撤销 git checkout -- .
-将已存入暂存区的文件撤销到未添加暂存区的状态 git reset HEAD 文件名
+- 将已存入暂存区的文件撤销到未添加暂存区的状态 git reset HEAD 文件名
 将所有已存入暂存区的撤销到未添加暂存区的状态 git reset HEAD
-撤销已经提交到远端的提交 git revert id *id是提交id revert已经revert的提交会恢复提交*
-回滚 git reset --hard 提交id *回滚到提交id对应的提交 后面的提交都失效 无法恢复*
-储藏工作中的变更 git stash *切换分支但是不想提交当前工作*
+- 撤销已经提交到远端的提交 git revert id *id是提交id revert已经revert的提交会恢复提交*
+- 回滚 git reset --hard 提交id *回滚到提交id对应的提交 后面的提交都失效 无法恢复*
+- 储藏工作中的变更 git stash *切换分支但是不想提交当前工作*  
 恢复变更 git stash pop
