@@ -1,8 +1,8 @@
-## Docker
+# Docker
 
-### 一、安装
+## 一、安装
 
-##### 1 卸载旧版本
+### 1 卸载旧版本
 
 ```bash
 sudo yum remove docker \
@@ -15,9 +15,9 @@ sudo yum remove docker \
                   docker-engine
 ```
 
-##### 2 安装Docker Engine-Community
+### 2 安装Docker Engine-Community
 
-###### (1) 设置仓库
+#### (1) 设置仓库
 
 ```bash
 ### 安装所需的软件包
@@ -33,7 +33,7 @@ sudo yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
-###### (2) 安装
+#### (2) 安装
 
 1. 安装稳定版本
 
@@ -55,17 +55,17 @@ sudo yum-config-manager \
       sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
       ```
 
-### 二、使用
+## 二、使用
 
-#### 容器
+### 容器
 
-##### 1 启动docker
+#### 1 启动docker
 
 ```bash
 systemctl start docker
 ```
 
-##### 2 运行交互式容器
+#### 2 运行交互式容器
 
 ```bash
 docker run -i -t ubuntu:15.10 /bin/bash
@@ -82,7 +82,7 @@ docker run -i -t ubuntu:15.10 /bin/bash
 
 > 运行 exit 命令或者使用 CTRL+D 来退出容器。
 
-##### 3 后台模式运行容器
+#### 3 后台模式运行容器
 
 ```bash
 docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
@@ -94,29 +94,29 @@ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1;
 >
 > 在容器内使用 docker logs 命令，查看容器内的标准输出
 
-##### 4 停止容器
+#### 4 停止容器
 
 `docker stop 容器id/容器名称` 停止容器
 
 > docker start 容器id 启动一个已经停止的容器
 
-##### 5 进入后台容器
+#### 5 进入后台容器
 
 `docker exec -it 容器id /bin/bash`
 
-##### 6 导出/导入容器
+#### 6 导出/导入容器
 
 `docker export 容器id > 导出文件名`  导出容器快照到本地文件 
 
 `cat docker/ubuntu.tar | docker import - test/ubuntu:v1`  从容器快照文件中导入为镜像
 
-##### 7 删除容器
+#### 7 删除容器
 
 `docker rm -f 容器ID/名称`
 
 `docker container prune` 删除所有处于终止状态的容器
 
-##### 8 运行web应用
+#### 8 运行web应用
 
 `docker pull training/webapp`  载入镜像
 `docker run -d -P training/webapp python app.py`
@@ -140,27 +140,27 @@ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1;
 
 `docker rm` 删除不需要的容器（容器必须是停止状态）
 
-#### 镜像
+### 镜像
 
-##### 1 查看本机镜像
+#### 1 查看本机镜像
 
 `docker images`
 
-##### 2 下载新镜像
+#### 2 下载新镜像
 
 `docker pull`
 
-##### 3 查找镜像
+#### 3 查找镜像
 
 `docker search`
 
-##### 4 删除镜像
+#### 4 删除镜像
 
 `docker rmi`
 
-### 三、Dockerfile
+## 三、Dockerfile
 
-#### 常用指令
+### 常用指令
 
 - FROM：定制的镜像都是基于 FROM 的镜像
 - RUN：用于执行后面跟着的命令行命令。有shell格式和exec格式，用`&&`连接命令只会创建一层镜像
@@ -171,7 +171,7 @@ COPY [--chown=<user>:<group>] <源路径1>...  <目标路径>
 COPY [--chown=<user>:<group>] ["<源路径1>",...  "<目标路径>"] #用户和用户组可选
 ```
 
-#### 构建镜像
+### 构建镜像
 
 `docker build -t 镜像名:标签 .` 
 
