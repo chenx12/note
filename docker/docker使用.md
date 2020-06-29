@@ -68,7 +68,7 @@ systemctl start docker
 #### 2 运行交互式容器
 
 ```bash
-docker run -i -t ubuntu:15.10 /bin/bash
+docker run -itd -p 443:443 -v /opt:/opt --name docker1 ubuntu:15.10 /bin/bash
 ```
 
 参数解析：
@@ -79,44 +79,42 @@ docker run -i -t ubuntu:15.10 /bin/bash
 - `/bin/bash` 在启动的容器里执行的命令
 - -t 在新容器内指定一个伪终端或终端。
 - -i 交互式操作。
+- -d 后台模式运行。
+- -p 指定端口,格式：主机端口:容器端口。
+- -v 挂载目录。
+- --name 指定容器名称。
 
 > 运行 exit 命令或者使用 CTRL+D 来退出容器。
-
-#### 3 后台模式运行容器
-
-```bash
-docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
-```
-
+>
 > docker ps 查看运行的容器
 >
 > docker ps -a 查看所有容器
 >
 > 在容器内使用 docker logs 命令，查看容器内的标准输出
 
-#### 4 停止容器
+#### 3 停止容器
 
-`docker stop 容器id/容器名称` 停止容器
+`docker stop 容器id/容器名称` 停止容器  
+`docker start 容器id` 启动一个已经停止的容器  
+`docker restart 容器id` 重启容器
 
-> docker start 容器id 启动一个已经停止的容器
-
-#### 5 进入后台容器
+#### 4 进入后台容器
 
 `docker exec -it 容器id /bin/bash`
 
-#### 6 导出/导入容器
+#### 5 导出/导入容器
 
 `docker export 容器id > 导出文件名`  导出容器快照到本地文件 
 
 `cat docker/ubuntu.tar | docker import - test/ubuntu:v1`  从容器快照文件中导入为镜像
 
-#### 7 删除容器
+#### 6 删除容器
 
 `docker rm -f 容器ID/名称`
 
 `docker container prune` 删除所有处于终止状态的容器
 
-#### 8 运行web应用
+#### 7 运行web应用
 
 `docker pull training/webapp`  载入镜像
 `docker run -d -P training/webapp python app.py`
