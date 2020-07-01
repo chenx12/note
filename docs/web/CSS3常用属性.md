@@ -93,6 +93,9 @@ boxShadow属性把一个或多个下拉阴影添加到框上。该属性是一�
       - `flex-shrink：num`属性定义了元素的缩小比例，默认为1，即如果空间不足，该项目将缩小。
       - `flex-basis`属性定义了在分配多余空间之前，元素占据的主轴空间。默认值为`auto`，即元素的本来大小。
       - `flex` 属性用于指定弹性子元素如何分配空间，是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为0 1 auto。后两个属性可选。（一般用数值）
+        - `initial`相当于0,1,auto; 
+        - `auto`相当于1,1,auto;
+        - `none`相当于0,0,auto。
       
       - `align-self` 属性用于设置弹性元素自身在侧轴（纵轴）方向上的对齐方式。
         - `auto`：如果'align-self'的值为'auto'，则其计算值为元素的父元素的'align-items'值，如果其没有父元素，则计算值为'stretch'。
